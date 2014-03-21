@@ -1,0 +1,14 @@
+@import "bootstrap";
+
+.list-item, .list-name {
+  cursor: default;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+.list-name a:link, .list-name a:visited, .list-name a:hover, .list-name a:active  { 
+    color: black;
+    text-decoration: none; 
+}
