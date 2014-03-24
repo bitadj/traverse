@@ -20,11 +20,9 @@ starbucks, chipotle, mcdonalds, coffee_bean, sizzler = Location.create([
   ])
 
 study_places, guilty, sixty_four = List.create([
-  {
-    name: 'Study Places'
-  }, 
-  {name: 'Guilty Pleasures'},
-  {name: 'When I\'m 64'}
+  { name: 'Study Places' }, 
+  { name: 'Guilty Pleasures' },
+  { name: 'When I\'m 64' }
   ])
 
 guilty.locations = [starbucks, mcdonalds, chipotle]
