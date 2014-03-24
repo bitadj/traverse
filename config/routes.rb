@@ -1,6 +1,8 @@
 Traverse::Application.routes.draw do
   resources :locations
 
+  put 'list/:id/removeloc/:location' => 'lists#removeloc', as: 'removeloc'
+
   resources :lists
 
   # The priority is based upon order of creation: first created -> highest priority.

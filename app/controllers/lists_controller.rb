@@ -27,6 +27,7 @@ class ListsController < ApplicationController
   end
 
   def update
+
     if @list.update(list_params)
       redirect_to @list, notice: 'List was successfully updated.'
     else
@@ -34,6 +35,12 @@ class ListsController < ApplicationController
     end
   end
 
+  def removeloc
+    # binding.pry
+    @list = List.find(params[:id])
+    @list.location_ids -= [params[:location].to_i]
+    redirect_to lists_path
+  end
 
   def destroy
     @list.destroy
@@ -52,4 +59,5 @@ class ListsController < ApplicationController
         :name, :location_ids => []
       )
     end
+
 end
