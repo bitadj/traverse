@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320004834) do
+ActiveRecord::Schema.define(version: 20140325011058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,23 @@ ActiveRecord::Schema.define(version: 20140320004834) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+    t.string   "salt"
+    t.string   "hashed_password"
   end
 
 end

@@ -18,7 +18,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-
+    @list.user_id = current_user.id
     if @list.save
       redirect_to @list, notice: 'List was successfully created.'
     else
@@ -56,7 +56,7 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.require(:list).permit(
-        :name, :location_ids => []
+        :name, :user_id, :location_ids => []
       )
     end
 

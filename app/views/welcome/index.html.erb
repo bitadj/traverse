@@ -1,0 +1,34 @@
+<div class = "container">
+  <div class="row half">
+    <!-- The header/large text or image that goes above the button -->
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-12 gutter"></div>
+    <div class="col-md-6 main">
+    
+      <!-- The button (opens the modal) -->  
+      <button class = "btn btn-lg btn-primary welcome-div" data-toggle="modal" data-target="#welcome">Login!</button>
+
+      <!-- The modal triggered by the button-click -->    
+      <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+
+              <!-- Modal header/message -->
+              <h3>Log In</h3>
+
+              <!-- Form Partial for Login -->
+              <%= render partial:'auths/login' %>
+
+              <!-- Sign-up link (redirects to users/new)-->
+              <%= link_to "Sign up!", new_user_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 gutter col-sm-12"></div>
+  </div>
+</div>
+

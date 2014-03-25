@@ -1,9 +1,18 @@
 Traverse::Application.routes.draw do
-  resources :locations
+  
+  resources :users, only:[:index, :new, :create]
+  resources :auths, only:[:new, :create]
 
+  delete "auths" => "auths#destroy"
+  
+  root 'welcome#index'
+
+  resources :locations
+  resources :lists
+  
   put 'list/:id/removeloc/:location' => 'lists#removeloc', as: 'removeloc'
 
-  resources :lists
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
