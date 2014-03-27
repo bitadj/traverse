@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :verify_logged_in
 
   def index
     @lists = List.all
@@ -7,6 +8,12 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+
+    if @list.user_id == current_user.id
+      render action: 'show'
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -27,8 +34,7 @@ class ListsController < ApplicationController
   end
 
   def update
-
-    if @list.update(list_params)
+    if @list.update(list_params) && @list.user_id = current_user.id
       redirect_to @list, notice: 'List was successfully updated.'
     else
       render action: 'edit'
@@ -43,8 +49,12 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
-    redirect_to lists_url
+    if @list.user_id = current_user.id
+      @list.destroy
+      redirect_to lists_url
+    else
+      redirect_to 'index', error: 'You must own this list in order to delete it.'
+    end
   end
 
   private

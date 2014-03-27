@@ -2,9 +2,9 @@
   <div class="panel panel-default ">
 
     <div class="panel-heading list-name", onclick="window.location.href = '<%= url_for list_path(list) %>'">
-      <%= list.name %>
+      <strong><%= list.name %></strong>
       <%= link_to list, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class='glyphicon glyphicon-trash'></span>
+          <span class='glyphicon glyphicon-remove pull-right del-button del-button-hide'></span>
       <% end %>
     </div>
 
@@ -15,7 +15,7 @@
           <tr onclick="window.location.href = '<%= url_for l %>'">
             <td class='list-item'><%= l.name %>
               <%= link_to removeloc_path(location: l.id,id: list.id), method: :put  do %>
-                <span class='glyphicon glyphicon-trash'>remove</span>
+                <span class='glyphicon glyphicon-remove pull-right del-button del-button-hide'></span>
               <% end %>
             </td>
           </tr>

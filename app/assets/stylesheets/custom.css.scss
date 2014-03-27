@@ -1,4 +1,114 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,200);
+
+$font-stack: 'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
+$primary-color: rgb(85, 85, 85);
+
+
+#map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border:2px solid black;
+}
+
+
+
+
+
+
+
+
+body {
+  font-family: $font-stack;
+  color: $primary-color;
+}
+
+.test {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: left;
+}
+
+.btn, .form-control, #disabledInput {
+  margin-bottom: 10px;
+}
+
+.btn {
+  .props &, .users &, .auths & {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+.half {
+  height: 50%;
+}
+
+.del-button-hide {
+  display: none;
+}
+
+.list-name {
+/*  font-weight: 400;*/
+font-size: 16px;
+}
+
+
+html, body, .container-fluid, .col-md-3, .col-md-6 {
+  height: 100%;
+}
+
+.welcome {
+  margin: 0 auto;
+}
+
+.main {
+  text-align: center;
+}
+
+.btn {
+  float: none;
+}
+
+.loc-content {
+  font-family: $font-stack; 
+  font-size: 18px;
+  font-weight: 200;
+  height: 46px;
+  color: $primary-color;
+}
+
+
+.loc-box-gradient, .outside-loc-box {
+  min-width: 200px;
+  min-height: 175px;
+  background: center no-repeat; 
+}
+
+.loc-box-gradient {
+  background-image: url('bg-gradient-8.png');
+  background-size: 100% 100%;
+}
+
+.loc-content-gradient {
+  font-family: $font-stack; 
+  font-size: 16px;
+  position: absolute;
+  bottom: 0;
+  margin: 0 0px 30px 0;
+  color: white;
+}
+
+strong {
+  font-weight: 400;
+}
 
 .list-item, .list-name {
   cursor: default;
@@ -9,6 +119,6 @@
 }
 
 .list-name a:link, .list-name a:visited, .list-name a:hover, .list-name a:active  { 
-    color: black;
+    color: $primary-color;
     text-decoration: none; 
 }

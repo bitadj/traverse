@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   def index
-    @locations = Location.all
+    @locations = Location.all.sort_by(&:michelinrate).reverse
   end
 
   def show
