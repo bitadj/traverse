@@ -1,15 +1,40 @@
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC5BY_CBhlo8ID7yT1UtvmKj3a5A9HM31c&sensor=true">
+    </script>
+
+    <script type="text/javascript">
+      var map;
+      function initialize() {
+        var city = new google.maps.LatLng(-34.397, 150.644);
+        var mapOptions = {
+          center: city,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        var marker = new google.maps.Marker({
+          position: city,
+          title: 'Hello',
+          // map: map
+        });
+        marker.setMap(map);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
 
 <p id="notice"><%= notice %></p>
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
 
 <div class="row">
-  <div class="col-md-3 col-sm-12 gutter"></div>
-    <div class="col-md-6 main">
+  <div class="col-md-4 col-sm-3 gutter"></div>
+    <div class="col-md-4 col-sm-6 main">
       <h2><%= @location.name %></h2>
-      <div id="map-canvas"></div>
+      <div id="map-canvas">
+
+      </div>
     </div>
-  <div class="col-md-3 col-sm-12 gutter"></div>
+  <div class="col-md-4 col-sm-3 gutter"></div>
 </div>
-
-

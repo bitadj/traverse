@@ -15,6 +15,7 @@
 # gem 'pg'
 #
 development:
+  # google_api_key: AIzaSyAzxH8eKAW9zPrmvdTYkihBrhJqO0fR5tk
   adapter: postgresql
   encoding: unicode
   database: traverse_development

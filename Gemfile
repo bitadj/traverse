@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem 'bcrypt'
+
+gem 'geocoder'
 gem 'google_places'
 
 # Use postgresql as the database for Active Record
