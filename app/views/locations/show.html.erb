@@ -6,7 +6,29 @@
 <!--     store lat/long of place location in var city 
     location.name in different script -->
 
-    <script type="text/javascript">
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', locations_path %>
+
+<div class="row">
+  <div class="col-md-4 col-sm-3 gutter"></div>
+    <div class="col-md-4 col-sm-6 main">
+      <h2><%= @location.name %></h2>
+
+      <div id="map-canvas"></div>
+
+      <br>
+
+      <div>
+        <!-- <input id="address" type="textbox" value="Sydney, NSW">
+        <input type="button" value="Encode" onclick="codeAddress()"> -->
+      </div>
+        <div><%= @response["result"]["formatted_address"]%></div>
+        <img src=" ">
+    </div>
+  <div class="col-md-4 col-sm-3 gutter"></div>
+</div>
+
+<script type="text/javascript">
       var map;
       var city;
       var geocoder;
@@ -55,32 +77,3 @@
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
-
-
-
-<p id="notice"><%= notice %></p>
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
-
-<div class="row">
-  <div class="col-md-4 col-sm-3 gutter"></div>
-    <div class="col-md-4 col-sm-6 main">
-      <h2><%= @location.name %></h2>
-
-       
-
-      <div id="map-canvas">
-
-      </div>
-
-      <div>
-        <input id="address" type="textbox" value="Sydney, NSW">
-        <input type="button" value="Encode" onclick="codeAddress()">
-      </div>
-        <div><%= @response["result"]["formatted_address"]%></div>
-        <div><%= @response["result"]["reference"] %></div>
-        <img src=" ">
-    </div>
-  <div class="col-md-4 col-sm-3 gutter"></div>
-</div>

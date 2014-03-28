@@ -12,18 +12,20 @@
 
 <p><%= render @locations %></p>
 
-
-<!-- Small modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-
-<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <%= form_for Favorite.new do |f| %>
-        <%= f.collection_select :list_id, current_user.lists, :id, :name, prompt: '-- Choose list --' %>
-        <%= f.hidden_field :location_id, id:"location_id" %>
-        <%= f.submit '+', class: 'add glyphicon glyphicon-plus pull-right list-name add' %>
-      <% end %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add location to your list...</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Favorite.new do |f| %>
+          <%= f.collection_select :list_id, current_user.lists, :id, :name, prompt: '-- Choose list --' %>
+          <%= f.hidden_field :location_id, id:"location_id" %>
+          <%= f.submit '+', class: 'add glyphicon glyphicon-plus pull-right list-name add' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
