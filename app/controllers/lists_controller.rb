@@ -41,13 +41,6 @@ class ListsController < ApplicationController
     end
   end
 
-  def removeloc
-    # binding.pry
-    @list = List.find(params[:id])
-    @list.location_ids -= [params[:location].to_i]
-    redirect_to lists_path
-  end
-
   def destroy
     if @list.user_id = current_user.id
       @list.destroy

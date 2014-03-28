@@ -1,27 +1,62 @@
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC5BY_CBhlo8ID7yT1UtvmKj3a5A9HM31c&sensor=true">
-    </script>
+</script>
+
+
+<!--     store lat/long of place location in var city 
+    location.name in different script -->
 
     <script type="text/javascript">
       var map;
+      var city;
+      var geocoder;
+      var lat = "<%= @response["result"]["geometry"]["location"]["lat"]%>"
+      var lng = "<%= @response["result"]["geometry"]["location"]["lng"]%>"
+      var service
+      var request
+
       function initialize() {
-        var city = new google.maps.LatLng(-34.397, 150.644);
+
+        geocoder = new google.maps.Geocoder();
+        city = new google.maps.LatLng(lat,lng);
+        // city = new google.maps.Geocoder('1520 2nd St., Santa Monica');
         var mapOptions = {
           center: city,
-          zoom: 8,
+          zoom: 17,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         var marker = new google.maps.Marker({
-          position: city,
-          title: 'Hello',
-          // map: map
+          position: city
+          // map: map  //alternative way to put down map
         });
         marker.setMap(map);
+
+        var request = { reference: "<%= @response['result']['reference'] %>" };
+        service = new google.maps.places.PlacesService(map);
+        var pr = service.getDetails(request);
+
       }
+
+      function codeAddress() {
+        var address = document.getElementById("address").value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
+
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+
+
 
 
 <p id="notice"><%= notice %></p>
@@ -32,9 +67,20 @@
   <div class="col-md-4 col-sm-3 gutter"></div>
     <div class="col-md-4 col-sm-6 main">
       <h2><%= @location.name %></h2>
+
+       
+
       <div id="map-canvas">
 
       </div>
+
+      <div>
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input type="button" value="Encode" onclick="codeAddress()">
+      </div>
+        <div><%= @response["result"]["formatted_address"]%></div>
+        <div><%= @response["result"]["reference"] %></div>
+        <img src=" ">
     </div>
   <div class="col-md-4 col-sm-3 gutter"></div>
 </div>

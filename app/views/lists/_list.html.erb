@@ -11,10 +11,10 @@
     <table class="table">
       <tr onclick="window.location.href = '<%= url_for location_path(list) %>'">
       </tr>
-        <% list.locations.each do |l| %>
-          <tr onclick="window.location.href = '<%= url_for l %>'">
-            <td class='list-item'><%= l.name %>
-              <%= link_to removeloc_path(location: l.id,id: list.id), method: :put  do %>
+        <% list.favorites.each do |favorite| %>
+          <tr onclick="window.location.href = '<%= url_for favorite.location %>'">
+            <td class='list-item'><%= favorite.location.name %>
+              <%= link_to favorite, method: :delete  do %>
                 <span class='glyphicon glyphicon-remove pull-right del-button del-button-hide'></span>
               <% end %>
             </td>
@@ -23,3 +23,8 @@
     </table>
   </div>
 </div>
+
+
+
+
+

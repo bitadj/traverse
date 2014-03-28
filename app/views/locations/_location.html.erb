@@ -8,17 +8,19 @@
       <% end %>"
     >
 
-        <%= link_to location, method: :delete do %>
-            <span class='glyphicon glyphicon-remove pull-right list-name'></span>
-        <% end %>
+      <!-- Button trigger modal -->
+      <div><button 
+        onclick="noBubble(this,event,<%= location.id %>)" class="btn btn-primary btn-lg glyphicon glyphicon-plus pull-right list-name" data-toggle="modal" data-target="#myModal">
+      </button></div>
+
 
       <div class=" 
-      <% if (location.url != nil) %>
-        loc-content-gradient
-      <% else %>
-        loc-content
-      <% end %>"
-    >
+        <% if (location.url != nil) %>
+          loc-content-gradient
+        <% else %>
+          loc-content
+        <% end %>"
+      >
         <strong><%= location.name %></strong>
         <br>
         <% if (location.michelinrate > 0) %>
@@ -37,23 +39,5 @@
 </div>
 
 
- <!--  <ul class="media-list, onclick="window.location.href = '<%#= url_for location_path(location) %>'"">
-    <li class="media">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="http://placekitten.com/100/100">
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading"><%#= location.name %></h4>
-          <%#= link_to location, method: :delete do %>
-            <span class='glyphicon glyphicon-remove pull-right list-name'></span>
-          <%# end %>
-          
-          Michelin Rating: <%# location.michelinrate.times do %>
-            <span class='glyphicon glyphicon-star'></span>
-          <%# end %>
-          <br>
-          <%#= location.city %>
-      </div>
-    </li>
-  </ul> -->
+
 

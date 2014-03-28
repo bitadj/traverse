@@ -1,5 +1,42 @@
 <h1>Locations#index</h1>
+
+<br>
+
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on top
+</button>
+
+
 <%= link_to 'New Location', new_location_path %>
 <br>
 
 <p><%= render @locations %></p>
+
+
+<!-- Small modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <%= form_for Favorite.new do |f| %>
+        <%= f.collection_select :list_id, current_user.lists, :id, :name, prompt: '-- Choose list --' %>
+        <%= f.hidden_field :location_id, id:"location_id" %>
+        <%= f.submit '+', class: 'add glyphicon glyphicon-plus pull-right list-name add' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  function noBubble(obj,evt,location_id) {
+    $('#location_id').val(location_id);
+    $('#myModal').modal('show');
+    if (!evt) var evt = window.event;
+    if (evt) evt.cancelBubble = true;
+    if (evt.stopPropagation) evt.stopPropagation();
+    console.log(location_id)
+  }
+</script>

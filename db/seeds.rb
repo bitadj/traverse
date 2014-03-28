@@ -165,7 +165,7 @@ locations = Location.create([
   { name: 'Ai Fiori', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'Aldea', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'annisa', michelinrate: 1, city: 'New York, NY' }, 
-  { name: 'Aquavit', michelinrate: 1, city: 'New York, NY' }, 
+  { name: 'Aquavit', michelinrate: 1, city: 'New York, NY', url: 'https://d19weqihs4yh5u.cloudfront.net/links/3e89919e08de7f49f23f44d090f4388941acf8f4/350x200' }, 
   { name: 'Aska', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'Aureole', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'A Voce Columbus', michelinrate: 1, city: 'New York, NY' }, 

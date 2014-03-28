@@ -9,8 +9,8 @@ Traverse::Application.routes.draw do
 
   resources :locations
   resources :lists
-  
-  put 'list/:id/removeloc/:location' => 'lists#removeloc', as: 'removeloc'
+
+  resources :favorites, only:[:create, :destroy]
 
   
 

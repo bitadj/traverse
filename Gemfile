@@ -7,6 +7,8 @@ gem 'bcrypt'
 gem 'geocoder'
 gem 'google_places'
 
+gem 'httparty', '0.11.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
