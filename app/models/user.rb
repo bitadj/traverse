@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   validates :username, uniqueness: true
+  validates :username, presence: true
 
   def authenticate?(password)
     self.hashed_password == BCrypt::Engine.hash_secret(password, self.salt)

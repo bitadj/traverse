@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   def create
     f = Favorite.create(favorite_params)
     puts f.inspect
-    redirect_to locations_path
+    redirect_to lists_path
   end
 
   def destroy

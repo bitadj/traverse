@@ -1,4 +1,4 @@
-<h1>Lists#index</h1>
+<h1><%= @current_user.username %>'s Lists</h1>
 <%= link_to 'New List', new_list_path %>
 <br>
 <p><%= render current_user.lists %></p>

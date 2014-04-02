@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :verify_logged_in
 
   def index
     @locations = Location.all.sort_by(&:michelinrate).reverse
@@ -9,6 +10,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
 
     @query = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{URI::escape(@location.name)}+in+#{URI::escape(@location.city)}&types=restaurant&sensor=true&key=AIzaSyAzxH8eKAW9zPrmvdTYkihBrhJqO0fR5tk")
+    # @query = "#{URI::escape(@location.name)}+in+#{URI::escape(@location.city)}"
 
     @response = HTTParty.get("https://maps.googleapis.com/maps/api/place/details/json?reference=#{@query['results'][0]['reference']}&sensor=true&key=AIzaSyAzxH8eKAW9zPrmvdTYkihBrhJqO0fR5tk")
   end

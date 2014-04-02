@@ -150,16 +150,16 @@ locations = Location.create([
   { name: 'Zabb Elee (Queens)', michelinrate: 0, city: 'New York, NY' }, 
   { name: 'zero otto nove', michelinrate: 0, city: 'New York, NY' }, 
   { name: 'Zoma', michelinrate: 0, city: 'New York, NY' }, 
-  { name: 'Chef\'s Table at Brooklyn Fare', michelinrate: 3, city: 'New York, NY', url: 'https://d19weqihs4yh5u.cloudfront.net/links/3e89919e08de7f49f23f44d090f4388941acf8f4/350x200' }, 
-  { name: 'Daniel', michelinrate: 3, city: 'New York, NY' }, 
-  { name: 'Eleven Madison Park', michelinrate: 3, city: 'New York, NY' }, 
-  { name: 'Jean Georges', michelinrate: 3, city: 'New York, NY' }, 
-  { name: 'Le Bernardin', michelinrate: 3, city: 'New York, NY' }, 
-  { name: 'Masa', michelinrate: 3, city: 'New York, NY' }, 
+  { name: 'Chef\'s Table at Brooklyn Fare', michelinrate: 3, city: 'New York, NY', url: 'http://www.womansday.com/cm/womansday/images/GG/02-Baja-Bouillabaisse-1.jpg' }, 
+  { name: 'Daniel', michelinrate: 3, city: 'New York, NY', url:'http://www.therichest.org/wp-content/uploads/Daniel.jpg' }, 
+  { name: 'Eleven Madison Park', michelinrate: 3, city: 'New York, NY', url: 'http://www.bonappetit.com/wp-content/uploads/2011/11/daniel-humm-eleven-madison-park-plate-484.jpg' }, 
+  { name: 'Jean Georges', michelinrate: 3, city: 'New York, NY', url: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcThtBfXKI72RO710GZa7GWoxYES3O8y0wgQ1V4v2cP_8MRPq8AE' }, 
+  { name: 'Le Bernardin', michelinrate: 3, city: 'New York, NY', url:'http://s3.amazonaws.com/foodspotting-ec2/reviews/1125793/thumb_600.jpg?1323814073' }, 
+  { name: 'Masa', michelinrate: 3, city: 'New York, NY', url: 'http://www.prochile.us/sites/default/files/imagecache/imagegallery_fullsize/PHL_7093ProChileEventJamesBeard052108PhillipAngert_0.jpg'}, 
   { name: 'Per Se', michelinrate: 3, city: 'New York, NY' }, 
-  { name: 'atera', michelinrate: 2, city: 'New York, NY' }, 
+  { name: 'atera', michelinrate: 2, city: 'New York, NY', url: 'http://graphics8.nytimes.com/images/2012/07/18/dining/18ALTREST_SPAN/18ALTREST_SPAN-articleLarge.jpg' }, 
   { name: 'Jungsik', michelinrate: 2, city: 'New York, NY' }, 
-  { name: 'Marea', michelinrate: 2, city: 'New York, NY' }, 
+  { name: 'Marea', michelinrate: 2, city: 'New York, NY', url:'http://www.gourmet.com/images/restaurants/2008/03/rsar_momofuku_ko608.jpg' }, 
   { name: 'Momofuku Ko', michelinrate: 2, city: 'New York, NY' }, 
   { name: 'Soto', michelinrate: 2, city: 'New York, NY' }, 
   { name: 'Ai Fiori', michelinrate: 1, city: 'New York, NY' }, 
@@ -202,7 +202,7 @@ locations = Location.create([
   { name: 'Musket Room (The)', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'NoMad', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'Oceana', michelinrate: 1, city: 'New York, NY' }, 
-  { name: 'Peter Luger', michelinrate: 1, city: 'New York, NY' }, 
+  { name: 'Peter Luger', michelinrate: 1, city: 'New York, NY', url:'http://graphics8.nytimes.com/images/2007/09/19/dining/19rest600.1.jpg' }, 
   { name: 'Public', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'Rosanjin', michelinrate: 1, city: 'New York, NY' }, 
   { name: 'Rouge Tomate', michelinrate: 1, city: 'New York, NY' }, 
@@ -225,6 +225,13 @@ to_visit, guilty, tried_true = List.create([
   { name: 'Tried and True', user_id: 1 }
 ])
 
+alex_fav, favs = List.create([
+  { name: 'Alex\'s Favorites', user_id: 2 },
+  { name: 'Fancy Noodles', user_id: 2 }
+])
+
 to_visit.locations = [locations[15], locations[101], locations[54]]
 guilty.locations = [locations[150], locations[101], locations[106], locations[84]]
 tried_true.locations = [locations[15], locations[27], locations[143], locations[7]]
+alex_fav.locations = [locations[99], locations[98], locations[97]]
+favs.locations = [locations[96], locations[95], locations[94], locations[93]]

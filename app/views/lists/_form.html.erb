@@ -4,9 +4,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.collection_check_boxes(:location_ids, Location.all, :id, :name, {:selected => params[:location_id], :class => "form-control input-lg" }) %>
-  </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

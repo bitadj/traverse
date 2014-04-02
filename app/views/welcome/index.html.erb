@@ -1,13 +1,38 @@
-<div class = "container">
+ 
+<div class="jumbotron">
+    <!-- <img src="https://s3.amazonaws.com/ooomf-com-files/3WEdcurTfKyrW3RITCa0_DSC07884.jpg"> -->
+</div>
+
+ <div class = "container">
+
+ <!--  <img class='col-md-12 col-sm-12 col-xs-12' src="https://s3.amazonaws.com/ooomf-com-files/3WEdcurTfKyrW3RITCa0_DSC07884.jpg"> -->
+
+
+   
+
   <div class="row half">
     <!-- The header/large text or image that goes above the button -->
   </div>
   <div class="row">
     <div class="col-md-3 col-sm-12 gutter"></div>
     <div class="col-md-6 main">
-    
+
+    <h1 style="color: white">TRAVERSE</h1>
+    <h3 style="color: white">Welcome to Traverse!</h3>
+    <h3 style="color: white"> Your resource for the best of New York!</h3>  
+
+    <% if current_user %>
+      <h3 style="color: white"><%= button_to "Your Lists", lists_path, :method => "get", class: "btn btn-lg btn-default" %>
+    <% end %>
+
+    <% if !current_user %>
       <!-- The button (opens the modal) -->  
-      <button class = "btn btn-lg btn-primary welcome-div" data-toggle="modal" data-target="#welcome">Login!</button>
+<!--       <button class = "btn btn-lg btn-primary welcome-div" data-toggle="modal" data-target="#welcome">Login!</button>
+      <br> -->
+        <h3 style="color: white">Please Log in below!</h3>
+            <%= button_to "Login!", new_auth_path, :method => "get", class: "btn btn-lg btn-primary" %>
+
+    <% end %>
 
       <!-- The modal triggered by the button-click -->    
       <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -27,6 +52,8 @@
           </div>
         </div>
       </div>
+
+
     </div>
     <div class="col-md-3 gutter col-sm-12"></div>
   </div>

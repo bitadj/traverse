@@ -1,6 +1,6 @@
-<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC5BY_CBhlo8ID7yT1UtvmKj3a5A9HM31c&sensor=true">
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyC5BY_CBhlo8ID7yT1UtvmKj3a5A9HM31c&sensor=true"></script>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places,geometry&key=AIzaSyC5BY_CBhlo8ID7yT1UtvmKj3a5A9HM31c"></script> -->
 
 
 <!--     store lat/long of place location in var city 
@@ -12,7 +12,41 @@
 <div class="row">
   <div class="col-md-4 col-sm-3 gutter"></div>
     <div class="col-md-4 col-sm-6 main">
-      <h2><%= @location.name %></h2>
+      <h2><%= @location.name %>
+        <button 
+          onclick="noBubble(this,event,<%= @location.id %>)" class="btn btn-default btn-sm glyphicon glyphicon-plus pull-right list-name" data-toggle="modal" data-target="#myModal">
+        </button>
+      </h2>
+
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add location to your list...</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Favorite.new do |f| %>
+          <%= f.collection_select :list_id, current_user.lists, :id, :name, prompt: '-- Choose list --' %>
+          <%= f.hidden_field :location_id, id:"location_id" %>
+          <%= f.submit '+', class: 'add glyphicon glyphicon-plus pull-right list-name add' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script type="text/javascript">
+  function noBubble(obj,evt,location_id) {
+    $('#location_id').val(location_id);
+    $('#myModal').modal('show');
+    if (!evt) var evt = window.event;
+    if (evt) evt.cancelBubble = true;
+    if (evt.stopPropagation) evt.stopPropagation();
+    console.log(location_id)
+  }
+</script>
 
       <div id="map-canvas"></div>
 
@@ -23,7 +57,37 @@
         <input type="button" value="Encode" onclick="codeAddress()"> -->
       </div>
         <div><%= @response["result"]["formatted_address"]%></div>
-        <img src=" ">
+        <br>
+        <div><%#= @query['results'][0]['reference'] %></div>
+        <div>Michelin Rating: 
+            <% if (@location.michelinrate > 0) %>
+              <% @location.michelinrate.times do %>
+                <span class='glyphicon glyphicon-star'> </span>
+              <% end %>
+            <% else %>
+              Bib Gourmand
+            <% end %>
+        </div>
+<br>
+        <table class="table table-condensed">
+          <tr>
+            <td>Food</td>
+            <td>Decor</td>
+            <td>Service</td>
+            <td>Cost</td>
+          </tr>
+          <tr>
+            <td>26</td>
+            <td>24</td>
+            <td>25</td>
+            <td>88</td>
+          </tr>
+        </table>
+
+
+        <div>
+          <a href="<%= @response["result"]["website"]%>"><%= @response["result"]["website"]%></a>
+        </div>   
     </div>
   <div class="col-md-4 col-sm-3 gutter"></div>
 </div>
@@ -41,13 +105,15 @@
 
         geocoder = new google.maps.Geocoder();
         city = new google.maps.LatLng(lat,lng);
-        // city = new google.maps.Geocoder('1520 2nd St., Santa Monica');
+
         var mapOptions = {
           center: city,
           zoom: 17,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        
         var marker = new google.maps.Marker({
           position: city
           // map: map  //alternative way to put down map
@@ -76,4 +142,6 @@
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+
+</script>
+
