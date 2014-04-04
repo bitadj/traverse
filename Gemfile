@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 gem 'bcrypt'
+gem 'thread_safe', '0.2.0'
 
 gem 'geocoder'
 gem 'google_places'
